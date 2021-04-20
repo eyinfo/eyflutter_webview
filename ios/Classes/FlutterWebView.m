@@ -6,6 +6,7 @@
 #import "FLTWKNavigationDelegate.h"
 #import "FLTWKProgressionDelegate.h"
 #import "JavaScriptChannelHandler.h"
+#import <UIKit/UIKit.h>
 
 @implementation FLTWebViewFactory {
   NSObject<FlutterBinaryMessenger>* _messenger;
@@ -61,6 +62,7 @@
   FLTWKWebView* _webView;
   int64_t _viewId;
   FlutterMethodChannel* _channel;
+  FlutterMethodChannel* _generalChannel;
   NSString* _currentUrl;
   // The set of registered JavaScript channel names.
   NSMutableSet* _javaScriptChannelNames;
@@ -77,6 +79,7 @@
 
     NSString* channelName = [NSString stringWithFormat:@"plugins.flutter.io/webview_%lld", viewId];
     _channel = [FlutterMethodChannel methodChannelWithName:channelName binaryMessenger:messenger];
+      _generalChannel = [FlutterMethodChannel methodChannelWithName:@"0eff8bd070f64d1890193686196f5a31" binaryMessenger:messenger];
     _javaScriptChannelNames = [[NSMutableSet alloc] init];
 
     WKUserContentController* userContentController = [[WKUserContentController alloc] init];
@@ -281,9 +284,6 @@
                completionHandler:^{
                  result(nil);
                }];
-  } else {
-    // support for iOS8 tracked in https://github.com/flutter/flutter/issues/27624.
-    NSLog(@"Clearing cache is not supported for Flutter WebViews prior to iOS 9.");
   }
 }
 
@@ -380,8 +380,6 @@
     case 1:  // unrestricted
       [preferences setJavaScriptEnabled:YES];
       break;
-    default:
-      NSLog(@"webview_flutter: unknown JavaScript mode: %@", mode);
   }
 }
 
@@ -392,7 +390,7 @@
       if (@available(iOS 10.0, *)) {
         configuration.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeAll;
       } else {
-        configuration.mediaPlaybackRequiresUserAction = true;
+          configuration.mediaPlaybackRequiresUserAction = true;
       }
       break;
     case 1:  // always_allow
@@ -402,8 +400,6 @@
         configuration.mediaPlaybackRequiresUserAction = false;
       }
       break;
-    default:
-      NSLog(@"webview_flutter: unknown auto media playback policy: %@", policy);
   }
 }
 
@@ -459,11 +455,33 @@
 
 - (void)updateUserAgent:(NSString*)userAgent {
   if (@available(iOS 9.0, *)) {
-    [_webView setCustomUserAgent:userAgent];
-  } else {
-    NSLog(@"Updating UserAgent is not supported for Flutter WebViews prior to iOS 9.");
+      [_webView evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id _Nullable result, NSError * _Nullable error){
+          if (error == nil && result != nil) {
+              NSString* userAgentString = [NSString stringWithFormat:@"%@", result];
+              if (userAgentString == nil || userAgentString.length == 0) {
+                  [self->_webView setCustomUserAgent:userAgent];
+                  [self->_generalChannel invokeMethod:@"6562451c4ed64632a4e5ca1bc51d1188" arguments:userAgent];
+                  return;
+              }
+              NSArray* agentsSet = [NSArray array];
+              NSArray *agents = [userAgentString componentsSeparatedByString:NSLocalizedString(@"|", nil)];
+              for (int i=0; i < agents.count; i++) {
+                  NSArray *items = [agents[i] componentsSeparatedByString:NSLocalizedString(@"&", nil)];
+                  for (int j=0; j < items.count; j++) {
+                      [agentsSet arrayByAddingObject:items[j]];
+                  }
+              }
+              if (![agentsSet containsObject:userAgent]) {
+                  userAgentString = [NSString stringWithFormat:@"%@&%@",userAgentString,userAgent];
+                  [self->_generalChannel invokeMethod:@"6562451c4ed64632a4e5ca1bc51d1188" arguments:userAgentString];
+                  [self->_webView setCustomUserAgent:userAgentString];
+              }
+          }
+      }];
   }
 }
+
+
 
 #pragma mark WKUIDelegate
 
@@ -476,6 +494,11 @@
   }
 
   return nil;
+}
+
+- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler {
+    [_generalChannel invokeMethod:@"04ee7fad397142a6ba4069de55db41ca" arguments:message];
+    completionHandler();
 }
 
 @end

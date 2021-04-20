@@ -40,9 +40,6 @@
         };
 
     [dataStore fetchDataRecordsOfTypes:websiteDataTypes completionHandler:deleteAndNotify];
-  } else {
-    // support for iOS8 tracked in https://github.com/flutter/flutter/issues/27624.
-    NSLog(@"Clearing cookies is not supported for Flutter WebViews prior to iOS 9.");
   }
 }
 

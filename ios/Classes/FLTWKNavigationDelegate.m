@@ -37,22 +37,14 @@
                      arguments:arguments
                         result:^(id _Nullable result) {
                           if ([result isKindOfClass:[FlutterError class]]) {
-                            NSLog(@"navigationRequest has unexpectedly completed with an error, "
-                                  @"allowing navigation.");
                             decisionHandler(WKNavigationActionPolicyAllow);
                             return;
                           }
                           if (result == FlutterMethodNotImplemented) {
-                            NSLog(@"navigationRequest was unexepectedly not implemented: %@, "
-                                  @"allowing navigation.",
-                                  result);
                             decisionHandler(WKNavigationActionPolicyAllow);
                             return;
                           }
                           if (![result isKindOfClass:[NSNumber class]]) {
-                            NSLog(@"navigationRequest unexpectedly returned a non boolean value: "
-                                  @"%@, allowing navigation.",
-                                  result);
                             decisionHandler(WKNavigationActionPolicyAllow);
                             return;
                           }
