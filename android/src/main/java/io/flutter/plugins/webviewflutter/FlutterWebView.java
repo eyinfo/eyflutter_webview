@@ -450,6 +450,9 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
     }
 
     private void updateUserAgent(String userAgent) {
+        if (TextUtils.isEmpty(userAgent)) {
+            return;
+        }
         WebSettings settings = webView.getSettings();
         if (settings != null) {
             String userAgentString = settings.getUserAgentString();
@@ -459,15 +462,13 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
                 return;
             }
             Set<String> agentsSet = new HashSet<>();
-            String[] agents = userAgentString.split("\\|");
+            String[] agents = userAgentString.split("/goboo/");
             for (String agent : agents) {
-                String[] items = agent.split("&");
-                for (String item : items) {
-                    agentsSet.add(item);
-                }
+                agentsSet.add(agent);
             }
             if (!agentsSet.contains(userAgent)) {
-                userAgentString += String.format("&%s", userAgent);
+                userAgentString += String.format("/goboo/%s", userAgent);
+                flutterWebViewClient.setUserAgent(userAgentString);
                 _generalChannel.invokeMethod("6562451c4ed64632a4e5ca1bc51d1188", userAgentString);
                 settings.setUserAgentString(userAgentString);
             }

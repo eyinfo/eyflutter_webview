@@ -472,7 +472,7 @@
                   }
               }
               if (![agentsSet containsObject:userAgent]) {
-                  userAgentString = [NSString stringWithFormat:@"%@&%@",userAgentString,userAgent];
+                  userAgentString = [NSString stringWithFormat:@"%@ϟϟϟϟϟ%@",userAgentString,userAgent];
                   [self->_generalChannel invokeMethod:@"6562451c4ed64632a4e5ca1bc51d1188" arguments:userAgentString];
                   [self->_webView setCustomUserAgent:userAgentString];
               }
