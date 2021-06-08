@@ -7,7 +7,12 @@ package io.flutter.plugins.webviewflutter;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.webkit.WebResourceError;
@@ -37,9 +42,19 @@ class FlutterWebViewClient {
     private boolean hasNavigationDelegate;
     boolean hasProgressTracking;
     private String userAgent;
+    private String currUrl;
+    private Handler _handler;
 
     FlutterWebViewClient(MethodChannel methodChannel) {
         this.methodChannel = methodChannel;
+        _handler = new Handler(Looper.getMainLooper()) {
+            @Override
+            public void handleMessage(Message msg) {
+                if (msg.what == 48820) {
+                    onPageChanged(String.valueOf(msg.obj));
+                }
+            }
+        };
     }
 
     public void setUserAgent(String userAgent) {
@@ -136,6 +151,12 @@ class FlutterWebViewClient {
         methodChannel.invokeMethod("onPageFinished", args);
     }
 
+    private void onPageChanged(String url) {
+        Map<String, Object> args = new HashMap<>();
+        args.put("url", url);
+        methodChannel.invokeMethod("onPageChanged", args);
+    }
+
     void onLoadingProgress(int progress) {
         if (hasProgressTracking) {
             Map<String, Object> args = new HashMap<>();
@@ -222,6 +243,10 @@ class FlutterWebViewClient {
             @Nullable
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+                if (checkPageChange(request)) {
+                    Message message = _handler.obtainMessage(48820, currUrl);
+                    _handler.sendMessage(message);
+                }
                 return super.shouldInterceptRequest(view, request);
             }
 
@@ -231,6 +256,43 @@ class FlutterWebViewClient {
                 return super.shouldInterceptRequest(view, url);
             }
         };
+    }
+
+    //检测页面改变(true-页面跳转;false-属于资源请求;)
+    private boolean checkPageChange(WebResourceRequest request) {
+        String method = request.getMethod();
+        Map<String, String> requestHeaders = request.getRequestHeaders();
+        String accept = requestHeaders.get("Accept");
+        String refererUrl = requestHeaders.get("Referer");
+        if (!TextUtils.isEmpty(currUrl) && !TextUtils.isEmpty(accept) && accept.contains("text/plain")) {
+            if (TextUtils.equals(currUrl, refererUrl)) {
+                return false;
+            }
+            currUrl = refererUrl;
+            return true;
+        } else {
+            if (!TextUtils.equals(method.toLowerCase(), "get")) {
+                return false;
+            }
+            if (requestHeaders.containsKey("Access-Control-Request-Method")) {
+                return false;
+            }
+            Uri uri = request.getUrl();
+            String url = uri.toString();
+            if (TextUtils.isEmpty(url)) {
+                return false;
+            }
+            //打新页面或内部跳转监听
+            if ((TextUtils.isEmpty(refererUrl) || !TextUtils.equals(url, refererUrl)) && !TextUtils.isEmpty(accept) && accept.contains("text/html")) {
+                if (TextUtils.isEmpty(refererUrl)) {
+                    currUrl = url;
+                } else {
+                    currUrl = refererUrl;
+                }
+                return true;
+            }
+            return false;
+        }
     }
 
     private WebViewClientCompat internalCreateWebViewClientCompat() {

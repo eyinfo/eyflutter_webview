@@ -25,7 +25,16 @@
 - (void)webView:(WKWebView *)webView
     decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
                     decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-  if (!self.hasDartNavigationDelegate) {
+    //过滤并判断当前页面变化
+    NSDictionary<NSString *, NSString *> *headers = navigationAction.request.allHTTPHeaderFields;
+    NSString *accept = [headers objectForKey:@"Accept"];
+    NSString *refererUrl = [headers objectForKey:@"Referer"];
+    NSLog(accept);
+    if (refererUrl != nil) {
+        NSLog(refererUrl);
+    }
+    
+  if (!self.hasDartNavigationDelegate){
     decisionHandler(WKNavigationActionPolicyAllow);
     return;
   }
