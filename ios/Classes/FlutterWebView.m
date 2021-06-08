@@ -101,6 +101,7 @@
     _navigationDelegate = [[FLTWKNavigationDelegate alloc] initWithChannel:_channel];
     _webView.UIDelegate = self;
     _webView.navigationDelegate = _navigationDelegate;
+    [_webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
     __weak __typeof__(self) weakSelf = self;
     [_channel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
       [weakSelf onMethodCall:call result:result];
@@ -125,7 +126,18 @@
   return self;
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    
+    if ([keyPath isEqualToString:@"title"]) {
+        if (object == _webView) {
+            NSLog(@"---------title = %@",_webView.title);
+            [_channel invokeMethod:@"onPageChanged" arguments:@{@"url":_webView.URL.absoluteString,@"title":_webView.title}];
+        }
+    }
+}
+
 - (void)dealloc {
+    [_webView removeObserver:self forKeyPath:@"title"];
   if (_progressionDelegate != nil) {
     [_progressionDelegate stopObservingProgress:_webView];
   }
