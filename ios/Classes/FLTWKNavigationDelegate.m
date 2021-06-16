@@ -29,9 +29,9 @@
     NSDictionary<NSString *, NSString *> *headers = navigationAction.request.allHTTPHeaderFields;
     NSString *accept = [headers objectForKey:@"Accept"];
     NSString *refererUrl = [headers objectForKey:@"Referer"];
-    NSLog(accept);
+//    NSLog(@"%@", accept);
     if (refererUrl != nil) {
-        NSLog(refererUrl);
+//        NSLog(@"%@", refererUrl);
     }
     
   if (!self.hasDartNavigationDelegate){
