@@ -37,14 +37,14 @@ packages:
     source: hosted
     version: "1.2.0"
   chewie:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: chewie
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.2"
   chewie_audio:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: chewie_audio
       url: "https://pub.flutter-io.cn"
@@ -58,7 +58,7 @@ packages:
     source: hosted
     version: "1.1.0"
   collection:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: collection
       url: "https://pub.flutter-io.cn"
@@ -72,7 +72,7 @@ packages:
     source: hosted
     version: "3.0.1"
   csslib:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: csslib
       url: "https://pub.flutter-io.cn"
@@ -117,21 +117,21 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_layout_grid:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_layout_grid
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.3"
   flutter_math_fork:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_math_fork
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.3+1"
   flutter_svg:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_svg
       url: "https://pub.flutter-io.cn"
@@ -153,7 +153,7 @@ packages:
     source: sdk
     version: "0.0.0"
   html:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: html
       url: "https://pub.flutter-io.cn"
@@ -188,7 +188,7 @@ packages:
     source: hosted
     version: "1.0.0"
   numerus:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: numerus
       url: "https://pub.flutter-io.cn"
@@ -333,7 +333,7 @@ packages:
     source: hosted
     version: "2.1.0"
   video_player:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: video_player
       url: "https://pub.flutter-io.cn"
