@@ -3,19 +3,13 @@
   "packages": [
     {
       "name": "archive",
-      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/archive-2.0.13",
+      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/archive-3.1.2",
       "packageUri": "lib/",
-      "languageVersion": "2.0"
-    },
-    {
-      "name": "args",
-      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/args-1.6.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.3"
+      "languageVersion": "2.12"
     },
     {
       "name": "async",
-      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/async-2.5.0",
+      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/async-2.6.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -50,16 +44,10 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "convert",
-      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/convert-2.1.1",
-      "packageUri": "lib/",
-      "languageVersion": "1.17"
-    },
-    {
       "name": "crypto",
-      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/crypto-2.1.5",
+      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/crypto-3.0.1",
       "packageUri": "lib/",
-      "languageVersion": "2.3"
+      "languageVersion": "2.12"
     },
     {
       "name": "fake_async",
@@ -69,7 +57,7 @@
     },
     {
       "name": "file",
-      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/file-6.0.0",
+      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/file-6.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -95,13 +83,13 @@
       "name": "fuchsia_remote_debug_protocol",
       "rootUri": "file:///Users/lijinghuan/installs/flutter/packages/fuchsia_remote_debug_protocol",
       "packageUri": "lib/",
-      "languageVersion": "2.2"
+      "languageVersion": "2.12"
     },
     {
       "name": "integration_test",
       "rootUri": "file:///Users/lijinghuan/installs/flutter/packages/integration_test",
       "packageUri": "lib/",
-      "languageVersion": "2.10"
+      "languageVersion": "2.12"
     },
     {
       "name": "matcher",
@@ -135,7 +123,7 @@
     },
     {
       "name": "process",
-      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/process-4.0.0",
+      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/process-4.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -147,7 +135,7 @@
     },
     {
       "name": "source_span",
-      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/source_span-1.8.0",
+      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/source_span-1.8.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -171,9 +159,9 @@
     },
     {
       "name": "sync_http",
-      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/sync_http-0.2.0",
+      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/sync_http-0.3.0",
       "packageUri": "lib/",
-      "languageVersion": "2.0"
+      "languageVersion": "2.12"
     },
     {
       "name": "term_glyph",
@@ -183,7 +171,7 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/test_api-0.2.19",
+      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/test_api-0.3.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -201,15 +189,15 @@
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/vm_service-5.5.0",
+      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/vm_service-6.2.0",
       "packageUri": "lib/",
-      "languageVersion": "2.6"
+      "languageVersion": "2.12"
     },
     {
       "name": "webdriver",
-      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/webdriver-2.1.2",
+      "rootUri": "file:///Users/lijinghuan/.pub-cache/hosted/pub.flutter-io.cn/webdriver-3.0.0",
       "packageUri": "lib/",
-      "languageVersion": "2.0"
+      "languageVersion": "2.12"
     },
     {
       "name": "webview_flutter",
@@ -224,7 +212,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-06-08T02:25:05.868562Z",
+  "generated": "2021-07-05T03:54:08.772547Z",
   "generator": "pub",
-  "generatorVersion": "2.12.3"
+  "generatorVersion": "2.13.0"
 }
