@@ -264,6 +264,9 @@ class FlutterWebViewClient {
         Map<String, String> requestHeaders = request.getRequestHeaders();
         String accept = requestHeaders.get("Accept");
         String refererUrl = requestHeaders.get("Referer");
+        if (refererUrl == null) {
+            return false;
+        }
         if (!TextUtils.isEmpty(currUrl) && !TextUtils.isEmpty(accept) && accept.contains("text/plain")) {
             if (TextUtils.equals(currUrl, refererUrl)) {
                 return false;
@@ -283,12 +286,8 @@ class FlutterWebViewClient {
                 return false;
             }
             //打新页面或内部跳转监听
-            if ((TextUtils.isEmpty(refererUrl) || !TextUtils.equals(url, refererUrl)) && !TextUtils.isEmpty(accept) && accept.contains("text/html")) {
-                if (TextUtils.isEmpty(refererUrl)) {
-                    currUrl = url;
-                } else {
-                    currUrl = refererUrl;
-                }
+            if (!TextUtils.equals(url, refererUrl) && !TextUtils.isEmpty(accept) && accept.contains("text/html")) {
+                currUrl = refererUrl;
                 return true;
             }
             return false;
