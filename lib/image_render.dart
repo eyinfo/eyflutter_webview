@@ -166,7 +166,8 @@ ImageRender networkImageRender({
             return altWidget?.call(_alt(attributes)) ??
                 Text(_alt(attributes) ?? "", style: context.style.generateTextStyle());
           } else {
-            return loadingWidget?.call() ?? const CircularProgressIndicator();
+            /*return loadingWidget?.call() ?? const CircularProgressIndicator();*/
+            return Container();
           }
         },
       );
