@@ -439,6 +439,7 @@ class CreationParams {
     this.javascriptChannelNames = const <String>{},
     this.userAgent,
     this.autoMediaPlaybackPolicy = AutoMediaPlaybackPolicy.require_user_action_for_all_media_types,
+    this.isOnlyChromeUserAgent = false,
   }) : assert(autoMediaPlaybackPolicy != null);
 
   /// The initialUrl to load in the webview.
@@ -471,6 +472,11 @@ class CreationParams {
 
   /// Which restrictions apply on automatic media playback.
   final AutoMediaPlaybackPolicy autoMediaPlaybackPolicy;
+
+  /// 是否仅允许chrome浏览器访问user agent
+  /// true: userAgent仅包含Mozilla/5.0 AppleWebKit/535.19 Chrome/56.0.0 Mobile Safari/535.19
+  /// false: 根据设备浏览器适配
+  final bool isOnlyChromeUserAgent;
 
   @override
   String toString() {

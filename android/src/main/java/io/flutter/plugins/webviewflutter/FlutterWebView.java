@@ -42,6 +42,7 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
     private final MethodChannel _generalChannel;
     private final FlutterWebViewClient flutterWebViewClient;
     private final Handler platformThreadHandler;
+    private Map<String, Object> initializeParams;
 
     // Verifies that a url opened by `Window.open` has a secure url.
     private class FlutterWebChromeClient extends WebChromeClient {
@@ -103,7 +104,7 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
             int id,
             Map<String, Object> params,
             View containerView) {
-
+        this.initializeParams = params;
         DisplayListenerProxy displayListenerProxy = new DisplayListenerProxy();
         DisplayManager displayManager =
                 (DisplayManager) context.getSystemService(Context.DISPLAY_SERVICE);
@@ -450,28 +451,38 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
     }
 
     private void updateUserAgent(String userAgent) {
-        if (TextUtils.isEmpty(userAgent)) {
-            return;
-        }
         WebSettings settings = webView.getSettings();
         if (settings != null) {
             String userAgentString = settings.getUserAgentString();
             if (TextUtils.isEmpty(userAgentString)) {
                 _generalChannel.invokeMethod("6562451c4ed64632a4e5ca1bc51d1188", userAgent);
-                settings.setUserAgentString(userAgent);
+                bindUserAgent(settings, userAgent);
                 return;
             }
             Set<String> agentsSet = new HashSet<>();
             String[] agents = userAgentString.split("/goboo/");
-            for (String agent : agents) {
-                agentsSet.add(agent);
-            }
+            Collections.addAll(agentsSet, agents);
             if (!agentsSet.contains(userAgent)) {
                 userAgentString += String.format("/goboo/%s", userAgent);
                 flutterWebViewClient.setUserAgent(userAgentString);
                 _generalChannel.invokeMethod("6562451c4ed64632a4e5ca1bc51d1188", userAgentString);
-                settings.setUserAgentString(userAgentString);
+                bindUserAgent(settings, userAgentString);
             }
+        }
+    }
+
+    private void bindUserAgent(WebSettings settings, String userAgent) {
+        boolean isOnlyChromeUserAgent = false;
+        if (initializeParams != null && !initializeParams.isEmpty()) {
+            Object onlyChromeUserAgent = initializeParams.get("isOnlyChromeUserAgent");
+            if (onlyChromeUserAgent instanceof Boolean) {
+                isOnlyChromeUserAgent = (boolean) onlyChromeUserAgent;
+            }
+        }
+        if (isOnlyChromeUserAgent) {
+            settings.setUserAgentString("Mozilla/5.0 AppleWebKit/535.19 Chrome/56.0.0 Mobile Safari/535.19");
+        } else {
+            settings.setUserAgentString(userAgent);
         }
     }
 

@@ -180,7 +180,7 @@ class JavascriptChannel {
   JavascriptChannel({
     required this.name,
     required this.onMessageReceived,
-  })   : assert(name != null),
+  })  : assert(name != null),
         assert(onMessageReceived != null),
         assert(_validChannelNames.hasMatch(name));
 
@@ -231,6 +231,7 @@ class WebView extends StatefulWidget {
     this.userAgent,
     this.initialMediaPlaybackPolicy = AutoMediaPlaybackPolicy.require_user_action_for_all_media_types,
     this.allowsInlineMediaPlayback = false,
+    this.isOnlyChromeUserAgent = false,
   })  : assert(javascriptMode != null),
         assert(initialMediaPlaybackPolicy != null),
         assert(allowsInlineMediaPlayback != null),
@@ -285,6 +286,11 @@ class WebView extends StatefulWidget {
 
   /// The initial URL to load.
   final String? initialUrl;
+
+  /// 是否仅允许chrome浏览器访问user agent
+  /// true: userAgent仅包含Mozilla/5.0 AppleWebKit/535.19 Chrome/56.0.0 Mobile Safari/535.19
+  /// false: 根据设备浏览器适配
+  final bool isOnlyChromeUserAgent;
 
   /// Whether Javascript execution is enabled.
   final JavascriptMode javascriptMode;
@@ -478,6 +484,7 @@ CreationParams _creationParamsfromWidget(WebView widget) {
     javascriptChannelNames: _extractChannelNames(widget.javascriptChannels),
     userAgent: widget.userAgent,
     autoMediaPlaybackPolicy: widget.initialMediaPlaybackPolicy,
+    isOnlyChromeUserAgent: widget.isOnlyChromeUserAgent,
   );
 }
 
