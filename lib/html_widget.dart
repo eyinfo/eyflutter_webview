@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/flutter_html.dart';
-import 'package:webview_flutter/src/layout_element.dart';
-import 'package:webview_flutter/style.dart';
+import 'package:eyflutter_webview/flutter_html.dart';
+import 'package:eyflutter_webview/src/layout_element.dart';
+import 'package:eyflutter_webview/style.dart';
 
 mixin OnHtmlStateController {
   void notifyHtml(String html);

@@ -8,7 +8,7 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.BinaryMessenger;
 
 /**
- * Java platform implementation of the webview_flutter plugin.
+ * Java platform implementation of the eyflutter_webview plugin.
  *
  * <p>Register this in an add to app scenario to gracefully handle activity and context changes.
  *

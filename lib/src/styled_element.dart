@@ -3,8 +3,8 @@ import 'package:html/dom.dart' as dom;
 
 //TODO(Sub6Resources): don't use the internal code of the html package as it may change unexpectedly.
 import 'package:html/src/query_selector.dart';
-import 'package:webview_flutter/src/css_parser.dart';
-import 'package:webview_flutter/style.dart';
+import 'package:eyflutter_webview/src/css_parser.dart';
+import 'package:eyflutter_webview/style.dart';
 
 /// A [StyledElement] applies a style to all of its children.
 class StyledElement {

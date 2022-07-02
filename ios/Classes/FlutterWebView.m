@@ -367,7 +367,7 @@
   if ([unknownKeys count] == 0) {
     return nil;
   }
-  return [NSString stringWithFormat:@"webview_flutter: unknown setting keys: {%@}",
+  return [NSString stringWithFormat:@"eyflutter_webview: unknown setting keys: {%@}",
                                     [unknownKeys componentsJoinedByString:@", "]];
 }
 

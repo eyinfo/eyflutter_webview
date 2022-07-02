@@ -8,7 +8,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:icon="@mipmap/ic_launcher"
-        android:label="webview_flutter_example">
+        android:label="eyflutter_webview_example">
         <activity
             android:name=".EmbeddingV1Activity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density"

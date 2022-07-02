@@ -3,10 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:html/dom.dart' as dom;
-import 'package:webview_flutter/html_parser.dart';
-import 'package:webview_flutter/src/anchor.dart';
-import 'package:webview_flutter/src/styled_element.dart';
-import 'package:webview_flutter/style.dart';
+import 'package:eyflutter_webview/html_parser.dart';
+import 'package:eyflutter_webview/src/anchor.dart';
+import 'package:eyflutter_webview/src/styled_element.dart';
+import 'package:eyflutter_webview/style.dart';
 
 /// A [LayoutElement] is an element that breaks the normal Inline flow of
 /// an html document with a more complex layout. LayoutElements handle

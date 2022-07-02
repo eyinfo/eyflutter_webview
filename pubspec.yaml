@@ -1,10 +1,11 @@
-name: webview_flutter
-description: webview_flutter
-version: 2.0.4
-homepage: https://github.com/eyinfo/webview_flutter
+name: eyflutter_webview
+description: eyflutter_webview
+version: 2.0.5
+homepage: https://github.com/eyinfo/eyflutter_webview
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.15.0 <3.0.0"
+  flutter: ">=1.20.0"
 
 dependencies:
   flutter:

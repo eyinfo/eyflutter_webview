@@ -5,13 +5,13 @@
 import 'dart:math';
 import 'dart:typed_data';
 
+import 'package:eyflutter_webview/eyflutter_webview.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/foundation/basic_types.dart';
 import 'package:flutter/src/gestures/recognizer.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:webview_flutter/platform_interface.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:eyflutter_webview/platform_interface.dart';
 
 typedef void VoidCallback();
 

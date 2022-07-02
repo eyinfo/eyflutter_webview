@@ -1,11 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:eyflutter_webview/html_parser.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/parser.dart';
 import 'package:html/dom.dart' as dom;
-import 'package:webview_flutter/html_parser.dart';
 
 typedef ImageSourceMatcher = bool Function(
   Map<String, String> attributes,

@@ -194,7 +194,7 @@
 				68BDCAEF23C3F7CB00D9C032 /* PBXTargetDependency */,
 			);
 			name = RunnerUITests;
-			productName = webview_flutter_exampleTests;
+			productName = eyflutter_webview_exampleTests;
 			productReference = 68BDCAE923C3F7CB00D9C032 /* RunnerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};

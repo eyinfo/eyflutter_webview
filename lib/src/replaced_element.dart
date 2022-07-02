@@ -2,21 +2,20 @@ import 'dart:math';
 
 import 'package:chewie/chewie.dart';
 import 'package:chewie_audio/chewie_audio.dart';
+import 'package:eyflutter_webview/eyflutter_webview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:video_player/video_player.dart';
-import 'package:webview_flutter/html_parser.dart';
-import 'package:webview_flutter/src/anchor.dart';
-import 'package:webview_flutter/src/styled_element.dart';
-import 'package:webview_flutter/src/utils.dart';
-import 'package:webview_flutter/src/widgets/iframe_unsupported.dart'
-    if (dart.library.io) 'package:webview_flutter/src/widgets/iframe_mobile.dart'
-    if (dart.library.html) 'package:webview_flutter/src/widgets/iframe_web.dart';
-import 'package:webview_flutter/style.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:eyflutter_webview/html_parser.dart';
+import 'package:eyflutter_webview/src/anchor.dart';
+import 'package:eyflutter_webview/src/styled_element.dart';
+import 'package:eyflutter_webview/src/utils.dart';
+import 'package:eyflutter_webview/src/widgets/iframe_unsupported.dart'
+    if (dart.library.io) 'package:eyflutter_webview/src/widgets/iframe_mobile.dart'
+    if (dart.library.html) 'package:eyflutter_webview/src/widgets/iframe_web.dart';
+import 'package:eyflutter_webview/style.dart';
 
 /// A [ReplacedElement] is a type of [StyledElement] that does not require its [children] to be rendered.
 ///

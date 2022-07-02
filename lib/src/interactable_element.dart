@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:html/dom.dart' as dom;
-import 'package:webview_flutter/src/styled_element.dart';
-import 'package:webview_flutter/style.dart';
+import 'package:eyflutter_webview/src/styled_element.dart';
+import 'package:eyflutter_webview/style.dart';
 
 /// An [InteractableElement] is a [StyledElement] that takes user gestures (e.g. tap).
 class InteractableElement extends StyledElement {

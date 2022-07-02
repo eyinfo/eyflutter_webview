@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:webview_flutter/src/styled_element.dart';
+import 'package:eyflutter_webview/src/styled_element.dart';
 
 class AnchorKey extends GlobalKey {
   static final Set<AnchorKey> _registry = <AnchorKey>{};

@@ -1,6 +1,6 @@
-# webview_flutter_example
+# eyflutter_webview_example
 
-Demonstrates how to use the webview_flutter plugin.
+Demonstrates how to use the eyflutter_webview plugin.
 
 ## Getting Started
 

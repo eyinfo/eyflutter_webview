@@ -4,21 +4,19 @@ import 'dart:math';
 import 'package:collection/collection.dart';
 import 'package:csslib/parser.dart' as cssparser;
 import 'package:csslib/visitor.dart' as css;
+import 'package:eyflutter_webview/eyflutter_webview.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as htmlparser;
 import 'package:numerus/numerus.dart';
-import 'package:webview_flutter/image_render.dart';
-import 'package:webview_flutter/src/anchor.dart';
-import 'package:webview_flutter/src/css_parser.dart';
-import 'package:webview_flutter/src/html_elements.dart';
-import 'package:webview_flutter/src/layout_element.dart';
-import 'package:webview_flutter/src/styled_element.dart';
-import 'package:webview_flutter/src/utils.dart';
-import 'package:webview_flutter/style.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:eyflutter_webview/image_render.dart';
+import 'package:eyflutter_webview/src/anchor.dart';
+import 'package:eyflutter_webview/src/css_parser.dart';
+import 'package:eyflutter_webview/src/html_elements.dart';
+import 'package:eyflutter_webview/src/layout_element.dart';
+import 'package:eyflutter_webview/src/utils.dart';
+import 'package:eyflutter_webview/style.dart';
 
 typedef OnTap = void Function(
   String? url,

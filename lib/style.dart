@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/html_parser.dart';
-import 'package:webview_flutter/src/css_parser.dart';
+import 'package:eyflutter_webview/html_parser.dart';
+import 'package:eyflutter_webview/src/css_parser.dart';
 
 ///This class represents all the available CSS attributes
 ///for this package.

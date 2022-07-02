@@ -5,9 +5,9 @@ import 'package:csslib/parser.dart' as cssparser;
 import 'package:csslib/visitor.dart' as css;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/html_parser.dart';
-import 'package:webview_flutter/src/utils.dart';
-import 'package:webview_flutter/style.dart';
+import 'package:eyflutter_webview/html_parser.dart';
+import 'package:eyflutter_webview/src/utils.dart';
+import 'package:eyflutter_webview/style.dart';
 
 Style declarationsToStyle(Map<String, List<css.Expression>> declarations) {
   Style style = new Style();

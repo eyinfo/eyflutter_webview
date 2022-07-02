@@ -4,11 +4,11 @@
 
 import 'dart:async';
 
+import 'package:eyflutter_webview/eyflutter_webview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 
-import 'webview_flutter.dart';
 
 /// Interface for callbacks made by [WebViewPlatformController].
 ///
@@ -115,8 +115,7 @@ class WebResourceError {
     this.domain,
     this.errorType,
     this.failingUrl,
-  })  : assert(errorCode != null),
-        assert(description != null);
+  });
 
   /// Raw code of the error from the respective platform.
   ///
@@ -161,7 +160,7 @@ class WebResourceError {
 /// passed to [WebViewPlatformBuilder#onWebViewPlatformCreated].
 ///
 /// Platform implementations that live in a separate package should extend this class rather than
-/// implement it as webview_flutter does not consider newly added methods to be breaking changes.
+/// implement it as eyflutter_webview does not consider newly added methods to be breaking changes.
 /// Extending this class (using `extends`) ensures that the subclass will get the default
 /// implementation, while platform implementations that `implements` this interface will be broken
 /// by newly added [WebViewPlatformController] methods.
@@ -382,7 +381,7 @@ class WebSettings {
     this.gestureNavigationEnabled,
     this.allowsInlineMediaPlayback,
     required this.userAgent,
-  }) : assert(userAgent != null);
+  });
 
   /// The JavaScript execution mode to be used by the webview.
   final JavascriptMode? javascriptMode;
@@ -440,7 +439,7 @@ class CreationParams {
     this.userAgent,
     this.autoMediaPlaybackPolicy = AutoMediaPlaybackPolicy.require_user_action_for_all_media_types,
     this.isOnlyChromeUserAgent = false,
-  }) : assert(autoMediaPlaybackPolicy != null);
+  });
 
   /// The initialUrl to load in the webview.
   ///
